@@ -22,29 +22,66 @@ Project total available time:
  7 days * 8hours = 56 hours
 
 Project milestones:
-    1--create a structure of data stored
-     and create sgin in ,sgin up pages
-        time: 3 hours
-        difficulty:less important
+    1-- build typing speed test for paragraph:
+
+            task 1:measrue speed for one word:
+                time:1 hour
+                difficulty:super important
+                dod:create meassureSpeedWord function
+
+            task 2:measure accuracy for one function
+                time:1 hour
+                difficulty:super important
+                dod:create checkAccuracyWord function
+
+            task 3:build full measure for one paragraph
+                time:3 hour
+                difficulty:super important
+                did:create measureTypingSpeed function
+
+            ---estimated time : 5 hours
     
-    2--create a header and footer:
-        time: 3 hours
-        difficulty:important
+    2-- create layout and pages project:
 
-    3--create the settings page:
-        time: 3 hours
-        difficulty:important
+            task 1:create home Page:
+                time:2 hour
+                difficulty:super important
+                dod:create filter and paragraph sections
+            
+            task 2:create the header
+                time:1 hour
+                difficulty: important
+                dod:contain logo and navbar
+            
+            task 3:create the settings page:
+                    time:2 hour
+                    difficulty: important
+                    dod:create theme button and control panel sounds sections
 
-    4--create the profile page:
-         time: 10 hours
-         difficulty:less important
+            task 4:create a structure of stored data and sgin up page
+                    time: 2 hours
+                    difficulty:less important
+                    dod:build createUser funtction and sgin up form
 
-    5--create the home page:
-        time:16 hours
-         difficulty:super important
+            task 5:create sgin in page
+                    time: 1 hours
+                    difficulty:less important
+                    dod:build getUser funtction and sgin up form
 
-    6--create and customize a beutifull template:
+            task 6:create the profile page:
+                        time: 10 hours
+                        difficulty:less important
+                        dod:user detials and analytics typing speed for per day
+
+            task 7:create the footer
+                time:20 minutes
+                difficulty: less important
+                dod:contain rights reserved and some text
+
+            ---estimated time : 18.3 hours
+
+    3--create and customize a beutifull template:
         time:16 hours
          difficulty: important
 
-    *--total estimated time:51 hours
+    *--total estimated time:39.3 hours
