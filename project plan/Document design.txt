@@ -10,7 +10,7 @@ Project Design:
         2-- sign up page:will include form for sgin up operation
         3-- home page: that includes these sections:
             *-- filter section:will filter type of paragraph
-                    []--such as what paragraph should includes (numbers,punctuation)
+                    []--such as what paragraph should includes (numbers,punctuation,upper cases)
                     []--time test that will be by selected time e.g (15,30,60,120) seconds
             *-- paragraph section:the section will do the typing test
         4-- settings:allow change theme and enable sounds
@@ -19,35 +19,41 @@ Project Design:
         
 
 Project total available time:
- 7 days * 8hours = 56 hours
+ 6 days * 8hours = 48 hours
 
 Project milestones:
     1-- build typing speed test for paragraph:
 
-            task 1:measrue speed for one word:
+            task 1:measrue speed for paragraph:
+                time:2 hour
+                difficulty:super important
+                dod:create meassureSpeedWord function that include these steps
+                    []-enable stopwatch that count a seconds
+                    []-let user start typing
+                    []-count typed words
+                    []-disable stopwatch when user finish writing
+                    []-convert the time to minutes
+                    []-return how much typed words per minutes
+
+            task 2:measure accuracy for paragraph
                 time:1 hour
                 difficulty:super important
-                dod:create meassureSpeedWord function
+                dod:refactor first task function by these steps:
+                    []-while the user typing , the funciton will count number of incorrect characters
+                    []-calculate the accuracy by deviding count to length of word
+                    []-when user finish typing the function will return also the accuracy as percentage
 
-            task 2:measure accuracy for one function
-                time:1 hour
-                difficulty:super important
-                dod:create checkAccuracyWord function
-
-            task 3:build full measure for one paragraph
-                time:3 hour
-                difficulty:super important
-                did:create measureTypingSpeed function
-
-            ---estimated time : 5 hours
+            ---estimated time : 3 hours
     
     2-- create layout and pages project:
 
             task 1:create home Page:
                 time:2 hour
                 difficulty:super important
-                dod:create filter and paragraph sections
-            
+                dod:create filter and paragraph sections:
+                    []- after user select type of test from filter
+                    []- we will fetch an appropriate paragraph by api
+                    
             task 2:create the header
                 time:1 hour
                 difficulty: important
@@ -56,22 +62,36 @@ Project milestones:
             task 3:create the settings page:
                     time:2 hour
                     difficulty: important
-                    dod:create theme button and control panel sounds sections
+                    dod:create theme button and button sounds sections
+                        []-the theme button will convert the theme dark,light.
+                        []-button sounds will enable or disable sound clicking
 
             task 4:create a structure of stored data and sgin up page
                     time: 2 hours
                     difficulty:less important
-                    dod:build createUser funtction and sgin up form
+                    dod:build createUser funtction and sgin up form:
+                        []-after user fill his details using the form [name,mail,password]
+                        []-using creatUser function will create new account:
+                            []--checking if current user already exist
+                            []--if not exist send the user to the server in order to save it
+                            []--if user exist show to him an appropriate message
 
             task 5:create sgin in page
                     time: 1 hours
                     difficulty:less important
-                    dod:build getUser funtction and sgin up form
+                    dod:build getUser funtction and sgin in form
+                        []-after user fill his details using the form [name,mail,password]
+                        []-using creatUser function will create new account:
+                                []--checking if current user already exist
+                                []--if not exist  show to him an appropriate message
+                                []--if user exist go to home page
 
             task 6:create the profile page:
                         time: 10 hours
                         difficulty:less important
-                        dod:user detials and analytics typing speed for per day
+                        dod:user detials and analytics typing speed for per day:
+                            []-show user detials such as name email
+                            []-display chart of analytics typing per day
 
             task 7:create the footer
                 time:20 minutes
@@ -80,8 +100,8 @@ Project milestones:
 
             ---estimated time : 18.3 hours
 
-    3--create and customize a beutifull template:
-        time:16 hours
+    3--customize my template:
+         time:16 hours
          difficulty: important
 
-    *--total estimated time:39.3 hours
+    *--total estimated time:37.3 hours
