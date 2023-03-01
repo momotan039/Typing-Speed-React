@@ -14,8 +14,9 @@ Project Design:
                     []--time test that will be by selected time e.g (15,30,60,120) seconds
             *-- paragraph section:the section will do the typing test
         4-- settings:allow change theme and enable sounds
+        5-- profile:display analytics for progress typing user per days
         *-- every page ofcourse have header and footer
-
+        
 
 Project total available time:
  7 days * 8hours = 56 hours
@@ -34,12 +35,16 @@ Project milestones:
         time: 3 hours
         difficulty:important
 
-    4--create the home page:
+    4--create the profile page:
+         time: 10 hours
+         difficulty:less important
+
+    5--create the home page:
         time:16 hours
          difficulty:super important
 
-    5--create and customize a beutifull template:
+    6--create and customize a beutifull template:
         time:16 hours
          difficulty: important
 
-    *--total estimated time:41 hours
+    *--total estimated time:51 hours
