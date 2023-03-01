@@ -1,0 +1,45 @@
+Project goal:
+    measure typing speed of user on keyborad ,
+    and add some features such as filters type
+    and analytics for progress typing user.
+
+Project Design:
+    the project will build using react library
+    its will include these pages:
+        1-- sign in page:will include form for sgin in operation
+        2-- sign up page:will include form for sgin up operation
+        3-- home page: that includes these sections:
+            *-- filter section:will filter type of paragraph
+                    []--such as what paragraph should includes (numbers,punctuation)
+                    []--time test that will be by selected time e.g (15,30,60,120) seconds
+            *-- paragraph section:the section will do the typing test
+        4-- settings:allow change theme and enable sounds
+        *-- every page ofcourse have header and footer
+
+
+Project total available time:
+ 7 days * 8hours = 56 hours
+
+Project milestones:
+    1--create a structure of data stored
+     and create sgin in ,sgin up pages
+        time: 3 hours
+        difficulty:less important
+    
+    2--create a header and footer:
+        time: 3 hours
+        difficulty:important
+
+    3--create the settings page:
+        time: 3 hours
+        difficulty:important
+
+    4--create the home page:
+        time:16 hours
+         difficulty:super important
+
+    5--create and customize a beutifull template:
+        time:16 hours
+         difficulty: important
+
+    *--total estimated time:41 hours
