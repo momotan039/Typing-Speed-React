@@ -1,34 +1,35 @@
 import { useContext, useEffect, useRef, useState } from "react"
+import { ParagraphContext } from "../Paragraph/Paragraph"
 
-export const Char = ({c,goToNextChar}) => {
-    const [char,setChar]=useState(c)
+export const Char = ({c}) => {
+    const paragraph=useContext(ParagraphContext)
+
     const charRef=useRef()
     
     function handleKeyUp(event) {
         const key=event.key
+        if(key === "Backspace")
+        {
+            paragraph.jumbTOPreviousChar()
+            return
+        }
         if(key===c.value)
             c.done='done'
-            
         else
             c.done='wrong'
-        
-        setChar({...c})
-        
-        goToNextChar()
+        paragraph.jumbTONextChar(c)
     }
 
     useEffect(()=>{
         if(c.now)
         {
-            debugger
             charRef.current.focus()
         }
-
     })
 
     return (
         <span 
-           tabIndex={c.tabIndex}
+            tabIndex={c.now?0:null}
             ref={charRef}
             onKeyUp={handleKeyUp}
             className={`char ${c.now} ${c.done}`}>

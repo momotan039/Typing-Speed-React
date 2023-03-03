@@ -4,9 +4,7 @@ import './App.css'
 import { Paragraph } from './components/Paragraph/Paragraph'
 
 function App() {
-  const [count, setCount] = useState(0)
-  // const par="life is short, cherish moments, love deeply, laugh often."
-  const par="life"
+  const par="life is short"
   return (
     <div className="App">
         <Paragraph paragraph={par} />

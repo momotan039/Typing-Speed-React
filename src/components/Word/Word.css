@@ -1,7 +1,7 @@
 .word{
     display: flex;
     gap: 2px;
-    font-size: 20px;
+    font-size: 40px;
 }
 
 .word .char.now{
