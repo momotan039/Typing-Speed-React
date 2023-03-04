@@ -2,7 +2,8 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
 import { Paragraph } from './components/Paragraph/Paragraph'
-
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Root from './components/Root'
 function App() {
   const quotes = [
     "The best way to predict the future is to invent it.",
@@ -14,13 +15,21 @@ function App() {
     "I have not failed. I've just found 10,000 ways that won't work.",
     "JavaScript is a programming language that is characterized as dynamic, weakly typed, prototype-based and multi-paradigm."
   ];
-
   const par=quotes[Math.floor(Math.random()*quotes.length)]
-  return (
-    <div className="App">
-        <Paragraph paragraph={par} />
-    </div>
-  )
+
+  const router=createBrowserRouter([
+    {
+      path:'/',
+      element:<Root/>,
+      children:[
+        {
+          path:'/',
+          element:<Paragraph paragraph={par}/>,
+        }
+      ]
+    }
+  ])
+  return <RouterProvider router={router}/>
 }
 
 export default App
