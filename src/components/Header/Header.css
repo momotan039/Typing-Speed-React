@@ -1,0 +1,13 @@
+header{
+    display: flex;
+    justify-content: space-around;
+}
+
+header nav{
+    display: flex;
+    gap: 10px;
+}
+
+header nav a{
+    color: white;
+}
