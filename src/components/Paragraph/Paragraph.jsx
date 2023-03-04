@@ -3,6 +3,7 @@ import { Word } from "../Word/Word"
 import { removePointerChar, cutsomizeWords, getMainWords, removeStyleChar, isFinishParagraph, calculateSpeed, isCorrectWord as countCorrectChars, isCorrectWord, calculateAccuracy, generateParagraph } from "./HelperParagraph.mjs"
 import './Paragraph.css'
 
+
 const paragraphObj = {
   jumbTOPreviousChar: null,
   jumbTONextChar: null,
