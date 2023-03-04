@@ -1,0 +1,17 @@
+.char{
+    position: relative;
+}
+.char.now::after{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: red;
+}
+
+.char.done{
+    color: green;
+}
+
+.char.wrong{
+    color: rgb(237, 21, 21);
+}

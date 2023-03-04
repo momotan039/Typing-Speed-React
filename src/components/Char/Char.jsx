@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef, useState } from "react"
 import { ParagraphContext } from "../Paragraph/Paragraph"
-
+import './Char.css'
 export const Char = ({c}) => {
     const paragraph=useContext(ParagraphContext)
 
@@ -8,15 +8,18 @@ export const Char = ({c}) => {
     
     function handleKeyUp(event) {
         const key=event.key
+        if(key==='Shift')
+        return
         if(key === "Backspace")
         {
-            paragraph.jumbTOPreviousChar()
+            paragraph.jumbTOPreviousChar(c)
             return
         }
         if(key===c.value)
             c.done='done'
         else
             c.done='wrong'
+        paragraph.lastChar=c
         paragraph.jumbTONextChar(c)
     }
 

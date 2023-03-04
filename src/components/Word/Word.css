@@ -3,15 +3,3 @@
     gap: 2px;
     font-size: 40px;
 }
-
-.word .char.now{
-    border-left: solid;
-}
-
-.word .char.done{
-    color: green;
-}
-
-.word .char.wrong{
-    color: rgb(237, 21, 21);
-}
