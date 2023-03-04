@@ -9,8 +9,6 @@ const paragraphObj = {
   jumbTONextChar: null,
   wordIndex: 0,
   charIndex: 0,
-  lastChar: null,
-  startTimer: false,
   setFocuesdChar:null
 }
 
