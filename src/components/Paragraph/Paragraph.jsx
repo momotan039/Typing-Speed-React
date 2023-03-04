@@ -15,7 +15,6 @@ const paragraphObj = {
 
 export const ParagraphContext = createContext(paragraphObj)
 export function Paragraph() {
-
   const [indexCurrentWord, setIndexCurrentWord] = useState(0)
   const [indexCurrentChar, setindexCurrentChar] = useState(0)
   const [mainWords, setMainWords] = useState([])
