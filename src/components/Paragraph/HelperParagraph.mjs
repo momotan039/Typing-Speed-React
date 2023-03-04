@@ -53,3 +53,20 @@ if(indexCurrentWord===words.length-1
 return true
 return false
  }
+
+ export const calculateSpeed=(correctWord,s)=>{
+    return Math.floor(correctWord / (s / 60))
+ }
+
+ export const isCorrectWord=(word)=>{
+    let isCorrect=true
+    word.chars.forEach(c => {
+        if(c.done!=='done')
+        isCorrect=false
+    });
+    return isCorrect
+ }
+
+ export const calculateAccuracy=(correctWord,words)=>{
+    return Math.floor((correctWord/words)*100)
+ }

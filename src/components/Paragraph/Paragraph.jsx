@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useRef, useState } from "react"
 import { Word } from "../Word/Word"
-import { removePointerChar, cutsomizeWords, getMainWords, removeStyleChar, isFinishParagraph } from "./HelperParagraph.mjs"
+import { removePointerChar, cutsomizeWords, getMainWords, removeStyleChar, isFinishParagraph, calculateSpeed, isCorrectWord as countCorrectChars, isCorrectWord, calculateAccuracy } from "./HelperParagraph.mjs"
 import './Paragraph.css'
 
 const paragraphObj = {
@@ -21,13 +21,8 @@ export function Paragraph({ paragraph }) {
   const [idTimer, setTimer] = useState(-1)
   const [seconds, setSeconds] = useState(0)
   const [finishGame, setFinishGame] = useState(false)
-  // useEffect(()=>{
-  //   const id=setInterval(() => {
-  //     setSeconds((s)=>s+1)
-  //   }, 1000);
-  //   setTimer(id)
-  //   return ()=> clearInterval(id)
-  // },[])
+  const [correctWords,setCorrectWords]=useState(0)
+
 
   return (
     <ParagraphContext.Provider value={{
@@ -43,11 +38,16 @@ export function Paragraph({ paragraph }) {
         removePointerChar(c, mainWords[indexCurrentWord])
         const lengthWord = words[indexCurrentWord].chars.length
         setindexCurrentChar((i) => ++i)
+
+        // check if the last char in word
         if (lengthWord - 1 === indexCurrentChar) {
+          //check if the whole word is correct
+          if(isCorrectWord(words[indexCurrentWord]))
+          setCorrectWords(correctWords+1)
           setIndexCurrentWord((i) => ++i)
           setindexCurrentChar(0)
         }
-        //check end Paragraph
+        //check finish Paragraph
         if (isFinishParagraph(words, indexCurrentChar, indexCurrentWord)) {
           clearInterval(idTimer)
           setFinishGame(true)
@@ -71,8 +71,6 @@ export function Paragraph({ paragraph }) {
         }
       }
     }}>
-      <h1>word index:{indexCurrentWord}</h1>
-      <h1>Char:index{indexCurrentChar}</h1>
       <h1>seconds:{seconds}</h1>
       <div className="paragraph">
         {
@@ -84,7 +82,10 @@ export function Paragraph({ paragraph }) {
       <br /><br />
       {
         finishGame &&
-        <h1>your score:{Math.floor((indexCurrentWord + 1) / (seconds / 60))}WPM</h1>
+        <>
+        <h1>WPM:{calculateSpeed(correctWords,seconds)}</h1>
+        <h1>Acc:{calculateAccuracy(correctWords,words.length)}%</h1>
+        </>
       }
     </ParagraphContext.Provider>
   )
