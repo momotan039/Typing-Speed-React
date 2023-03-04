@@ -3,9 +3,9 @@ import { ParagraphContext } from "../Paragraph/Paragraph"
 import './Char.css'
 export const Char = ({c}) => {
     const paragraph=useContext(ParagraphContext)
-
     const charRef=useRef()
-    
+    const [focused,setFocused]=useState(false)
+
     function handleKeyUp(event) {
         const key=event.key
         if(key==='Shift')
@@ -19,7 +19,6 @@ export const Char = ({c}) => {
             c.done='done'
         else
             c.done='wrong'
-        paragraph.lastChar=c
         paragraph.jumbTONextChar(c)
     }
 
@@ -27,11 +26,14 @@ export const Char = ({c}) => {
         if(c.now)
         {
             charRef.current.focus()
+            paragraph.setFocuesdChar(true)
         }
     })
 
     return (
         <span 
+            onBlur={()=>{paragraph.setFocuesdChar(false)}}
+            onFocus={()=>paragraph.setFocuesdChar(true)}
             tabIndex={c.now?0:null}
             ref={charRef}
             onKeyUp={handleKeyUp}

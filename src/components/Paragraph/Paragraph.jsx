@@ -10,32 +10,21 @@ const paragraphObj = {
   charIndex: 0,
   lastChar: null,
   startTimer: false,
+  setFocuesdChar:null
 }
 
 export const ParagraphContext = createContext(paragraphObj)
 export function Paragraph() {
-  const quotes = [
-    "The best way to predict the future is to invent it.",
-    "Don't let yesterday take up too much of today.",
-    "If you want to achieve greatness stop asking for permission.",
-    "The only limit to our realization of tomorrow will be our doubts of today.",
-    "You miss 100% of the shots you don't take.",
-    "Believe you can and you're halfway there.",
-    "I have not failed. I've just found 10,000 ways that won't work.",
-    "JavaScript is a programming language that is characterized as dynamic, weakly typed, prototype-based and multi-paradigm."
-  ];
-  
-  const paragraph=quotes[Math.floor(Math.random()*quotes.length)]
 
   const [indexCurrentWord, setIndexCurrentWord] = useState(0)
   const [indexCurrentChar, setindexCurrentChar] = useState(0)
-  // const [mainWords, setMainWords] = useState(getMainWords(paragraph))
   const [mainWords, setMainWords] = useState([])
   const words = cutsomizeWords(indexCurrentWord, indexCurrentChar, mainWords)
-  const [idTimer, setTimer] = useState(-1)
+  const [idTimer, setTimer] = useState(null)
   const [seconds, setSeconds] = useState(0)
   const [finishGame, setFinishGame] = useState(false)
   const [correctWords, setCorrectWords] = useState(0)
+  const [isFocused, setIsFocused] = useState(false)
   useEffect(()=>{
     generateParagraph().then((res)=>{
       setMainWords(getMainWords(res))
@@ -44,8 +33,10 @@ export function Paragraph() {
   return (
     <ParagraphContext.Provider value={{
       ...paragraphObj,
+      setFocuesdChar:(res)=>setIsFocused(res),
       jumbTONextChar: (c) => {
-        if (!indexCurrentChar && !indexCurrentWord) {
+        //set timer when start typing
+        if (!indexCurrentChar && !indexCurrentWord && !idTimer) {
           setTimer(setInterval(() => {
             setSeconds((s) => s + 1)
           }, 1000))
@@ -89,7 +80,6 @@ export function Paragraph() {
       }
     }}>
       <div>
-        <h1>seconds:{seconds}</h1>
         <div className="paragraph">
           {
             words.map((w, i) => {
@@ -97,6 +87,8 @@ export function Paragraph() {
             })
           }
         </div>
+        <br /><br />
+        <h1>{isFocused?'focused':'Blur'}</h1>
         <br /><br />
         {
           finishGame &&
