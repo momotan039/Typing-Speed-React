@@ -1,19 +1,27 @@
 .char{
     position: relative;
 }
-.char.now::after{
+.char::after{
     position: absolute;
     content: '';
     width: 1px;
     height: 40px;
-    left: 0;
+    left: -10px;
+    opacity: 0;
     top: 10px;
     background-color: rgb(237 165 21);
-    animation: scal 1s infinite ease
 }
+
+.char.now::after{
+    left: 0;
+    opacity: 1;
+    transition: all .1s ease;
+    animation: scal 1s infinite ease alternate
+}
+
 @keyframes scal {
     to{
-        opacity: 0.4;
+        opacity: 0;
     }
 }
 .char.now:focus{

@@ -4,3 +4,10 @@
   padding: 2rem;
   text-align: center;
 }
+
+#outlet{
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
