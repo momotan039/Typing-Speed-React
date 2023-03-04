@@ -78,6 +78,7 @@ export function Paragraph() {
       }
     }}>
       <div>
+      <h1>Correct Words:<div className="jello">{correctWords}</div></h1>
         <div className="paragraph">
           {
             words.map((w, i) => {
@@ -86,7 +87,7 @@ export function Paragraph() {
           }
         </div>
         <br /><br />
-        <h1>{isFocused?'focused':'Blur'}</h1>
+        {/* <h1>{isFocused?'focused':'Blur'}</h1> */}
         <br /><br />
         {
           finishGame &&

@@ -6,19 +6,29 @@ export const Char = ({c}) => {
     const charRef=useRef()
     const [focused,setFocused]=useState(false)
 
-    function handleKeyUp(event) {
+    function handleKeyDown(event) {
+        event.preventDefault()
         const key=event.key
-        if(key==='Shift')
+
+        if( key==='Shift')
         return
+
         if(key === "Backspace")
         {
             paragraph.jumbTOPreviousChar(c)
             return
         }
+        const allowedKeys = /[a-zA-Z0-9 !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+        debugger
+
+        if(!allowedKeys.test(key) || event.ctrlKey || event.altKey ){
+            return
+        }
+
         if(key===c.value)
             c.done='done'
         else
-            c.done='wrong'
+            c.done='wrong jello'
         paragraph.jumbTONextChar(c)
     }
 
@@ -36,7 +46,7 @@ export const Char = ({c}) => {
             onFocus={()=>paragraph.setFocuesdChar(true)}
             tabIndex={c.now?0:null}
             ref={charRef}
-            onKeyUp={handleKeyUp}
+            onKeyDown={handleKeyDown}
             className={`char ${c.now} ${c.done}`}>
             {c.value}
         </span>
