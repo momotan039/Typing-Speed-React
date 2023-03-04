@@ -3,11 +3,22 @@
 }
 .char.now::after{
     position: absolute;
-    width: 100px;
-    height: 100px;
-    background-color: red;
+    content: '';
+    width: 1px;
+    height: 40px;
+    left: 0;
+    top: 10px;
+    background-color: rgb(237 165 21);
+    animation: scal 1s infinite ease
 }
-
+@keyframes scal {
+    to{
+        opacity: 0.4;
+    }
+}
+.char.now:focus{
+    outline: none;
+}
 .char.done{
     color: green;
 }
