@@ -6,19 +6,6 @@ export const cutsomizeWords = (wordIndex, charIndex,words) => {
             })
         })
         return words
-    // return paragraph.split(' ').map((w, i) => {
-    //   const isCurrentWord = wordIndex === i;
-    //   return {
-    //     chars: w.split('').map((c, j) => {
-    //       return {
-    //         value: c,
-    //         now: isCurrentWord && charIndex === j ? 'now' : '',
-    //         done: '',
-    //       }
-    //     }),
-    //     isCurrent: wordIndex === i ? true : false
-    //   }
-    // })
   }
 
   export const getMainWords = (paragraph) => {
@@ -69,4 +56,9 @@ return false
 
  export const calculateAccuracy=(correctWord,words)=>{
     return Math.floor((correctWord/words)*100)
+ }
+
+ export const generateParagraph=async()=>{
+    const res=await fetch('https://api.quotable.io/random').then((r)=>r.json())
+    return res.content
  }

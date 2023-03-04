@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useRef, useState } from "react"
 import { Word } from "../Word/Word"
-import { removePointerChar, cutsomizeWords, getMainWords, removeStyleChar, isFinishParagraph, calculateSpeed, isCorrectWord as countCorrectChars, isCorrectWord, calculateAccuracy } from "./HelperParagraph.mjs"
+import { removePointerChar, cutsomizeWords, getMainWords, removeStyleChar, isFinishParagraph, calculateSpeed, isCorrectWord as countCorrectChars, isCorrectWord, calculateAccuracy, generateParagraph } from "./HelperParagraph.mjs"
 import './Paragraph.css'
 
 const paragraphObj = {
@@ -13,17 +13,34 @@ const paragraphObj = {
 }
 
 export const ParagraphContext = createContext(paragraphObj)
-export function Paragraph({ paragraph }) {
+export function Paragraph() {
+  const quotes = [
+    "The best way to predict the future is to invent it.",
+    "Don't let yesterday take up too much of today.",
+    "If you want to achieve greatness stop asking for permission.",
+    "The only limit to our realization of tomorrow will be our doubts of today.",
+    "You miss 100% of the shots you don't take.",
+    "Believe you can and you're halfway there.",
+    "I have not failed. I've just found 10,000 ways that won't work.",
+    "JavaScript is a programming language that is characterized as dynamic, weakly typed, prototype-based and multi-paradigm."
+  ];
+  
+  const paragraph=quotes[Math.floor(Math.random()*quotes.length)]
+
   const [indexCurrentWord, setIndexCurrentWord] = useState(0)
   const [indexCurrentChar, setindexCurrentChar] = useState(0)
-  const [mainWords, setMainWords] = useState(getMainWords(paragraph))
+  // const [mainWords, setMainWords] = useState(getMainWords(paragraph))
+  const [mainWords, setMainWords] = useState([])
   const words = cutsomizeWords(indexCurrentWord, indexCurrentChar, mainWords)
   const [idTimer, setTimer] = useState(-1)
   const [seconds, setSeconds] = useState(0)
   const [finishGame, setFinishGame] = useState(false)
   const [correctWords, setCorrectWords] = useState(0)
-
-
+  useEffect(()=>{
+    generateParagraph().then((res)=>{
+      setMainWords(getMainWords(res))
+    })
+  },[])
   return (
     <ParagraphContext.Provider value={{
       ...paragraphObj,
