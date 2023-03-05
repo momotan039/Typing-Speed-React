@@ -32,3 +32,42 @@
   color: var(--colorLight);
 }
 
+.card{
+  padding: 20px;
+  background: var(--backDark);
+  border-radius: 20px;
+  max-width: 500px;
+  width: 100%;
+  color: var(--backLight);
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+.card .content{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card .content .row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 13px;
+}
+
+.card .content .row input{
+padding: 15px 20px;
+border-radius: 10px;
+font-size: 18px;
+font-weight: bold;
+}
+.card .content .btns{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card .content .error{
+  color: red;
+}

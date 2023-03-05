@@ -9,7 +9,10 @@ export const cutsomizeWords = (wordIndex, charIndex,words) => {
   }
 
   export const getMainWords = (paragraph) => {
-    return paragraph.split(' ').map((w, i) => {
+   const words=paragraph.split(' ')
+    return words.map((w, i) => {
+      if(i<words.length-1)
+      w+=' '
       return {
         chars: w.split('').map((c, j) => {
           return {
