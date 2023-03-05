@@ -78,7 +78,7 @@ export function Paragraph() {
       }
     }}>
       <div>
-      <h1>Correct Words:<div className="jello">{correctWords}</div></h1>
+      <h1>Correct Words:{correctWords}</h1>
         <div className="paragraph">
           {
             words.map((w, i) => {

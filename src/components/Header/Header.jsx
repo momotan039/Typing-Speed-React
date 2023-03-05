@@ -4,7 +4,7 @@ import './Header.css'
 export default function Header() {
   return (
     <header>
-        <div className="logo">
+        <div className="logo jello">
             <h1>Typing Speed</h1>
         </div>
         <nav className="menu">
