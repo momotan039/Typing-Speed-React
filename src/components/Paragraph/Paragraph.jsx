@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useRef, useState } from "react"
+import { playCorrectSound, playWrongSound } from "../Utils/Sounds.mjs"
 import { Word } from "../Word/Word"
 import { removePointerChar, cutsomizeWords, getMainWords, removeStyleChar, isFinishParagraph, calculateSpeed, isCorrectWord as countCorrectChars, isCorrectWord, calculateAccuracy, generateParagraph } from "./HelperParagraph.mjs"
 import './Paragraph.css'

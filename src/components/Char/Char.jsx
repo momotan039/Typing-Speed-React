@@ -1,8 +1,11 @@
 import { useContext, useEffect, useRef, useState } from "react"
 import { ParagraphContext } from "../Paragraph/Paragraph"
+import { SettingsContext } from "../Root"
+import { playCorrectSound, playWrongSound } from "../Utils/Sounds.mjs"
 import './Char.css'
 export const Char = ({c}) => {
     const paragraph=useContext(ParagraphContext)
+    const settings=useContext(SettingsContext)
     const charRef=useRef()
     const [focused,setFocused]=useState(false)
 
@@ -19,16 +22,21 @@ export const Char = ({c}) => {
             return
         }
         const allowedKeys = /[a-zA-Z0-9 !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
-        debugger
 
         if(!allowedKeys.test(key) || event.ctrlKey || event.altKey ){
             return
         }
 
         if(key===c.value)
-            c.done='done'
+            {
+                c.done='done'
+                playCorrectSound(settings.enableSound)
+            }
         else
-            c.done='wrong jello'
+            {
+                c.done='wrong jello'
+                playWrongSound(settings.enableSound)
+            }
         paragraph.jumbTONextChar(c)
     }
 

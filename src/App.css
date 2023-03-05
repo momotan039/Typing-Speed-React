@@ -1,12 +1,15 @@
-#root {
+:root{
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  color: white;
-  background-color: #141414;
   height: 100%;
+  --backDark:black;
+  --colorDark:white;
+
+  --backLight:white;
+  --colorLight:black;
 }
 
 #outlet{
-  height: 80vh;
+  height: 81vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,3 +21,14 @@
   padding: 2rem;
   text-align: center;
 }
+
+.root{
+  background-color: var(--backDark);
+  color: var(--colorDark);
+}
+
+.root.dark{
+  background-color: var(--backLight);
+  color: var(--colorLight);
+}
+
