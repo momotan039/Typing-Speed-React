@@ -34,3 +34,7 @@
 .char.wrong{
     color: rgb(237, 21, 21);
 }
+
+.char.wrong.space{
+    background-color: red;
+}

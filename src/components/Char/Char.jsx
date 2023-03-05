@@ -55,7 +55,7 @@ export const Char = ({c}) => {
             tabIndex={c.now?0:null}
             ref={charRef}
             onKeyDown={handleKeyDown}
-            className={`char ${c.now} ${c.done}`}>
+            className={`char ${c.now} ${c.done} ${c.value===' '?'space':''}`}>
             {c.value}
         </span>
     )
