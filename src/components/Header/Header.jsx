@@ -15,8 +15,7 @@ export default function Header() {
             <Link to='/'>Home</Link>
             <Link to='/settings'>Settings</Link>
             <button onClick={app.logout}>LogOut</button>
-            <h2>{}</h2>
-        </nav>
+          </nav>
           </>
         }
     </header>

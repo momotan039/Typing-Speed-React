@@ -9,10 +9,10 @@ header nav{
 }
 
 header nav a{
-    color: var(--colorDark);
+    color: var(--colorLight);
 }
 
 .root.dark header nav a{
-    color: var(--colorLight);
+    color: var(--colorDark);
 }
 
