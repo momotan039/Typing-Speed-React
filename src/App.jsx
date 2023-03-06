@@ -9,6 +9,7 @@ import { LogIn, LogOut, createAccount } from "./components/Utils/User.mjs";
 import Login from "./components/Login/Login";
 import SignUp from "./components/Signup/SignUp";
 import { getUserFromSorage } from "./components/Utils/LocalStorage.mjs";
+import Home from "./components/Home/Home";
 
 
 export const AppContext=createContext()
@@ -18,7 +19,7 @@ function App() {
     const userChildren=[
       {
         path: "/",
-        element: <Paragraph />,
+        element: <Home/>,
       },
       {
         path: "/settings",
