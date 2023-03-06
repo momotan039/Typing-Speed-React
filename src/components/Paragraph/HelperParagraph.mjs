@@ -45,7 +45,7 @@ return false
  }
 
  export const calculateSpeed=(correctWord,s)=>{
-    return Math.floor(correctWord / (s / 60))
+    return Math.round(correctWord / (s / 60))
  }
 
  export const isCorrectWord=(word)=>{
