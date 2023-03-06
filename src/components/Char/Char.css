@@ -35,6 +35,12 @@
     color: rgb(237, 21, 21);
 }
 
-.char.wrong.space{
+.char.wrong.space::before{
+    position: absolute;
+    content: '';
+    bottom: 5px;
+    left: auto;
+    width: 10px;
+    height: 20px;
     background-color: red;
 }

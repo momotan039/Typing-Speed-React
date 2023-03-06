@@ -21,9 +21,9 @@ export const Char = ({c}) => {
             paragraph.jumbTOPreviousChar(c)
             return
         }
-        const allowedKeys = /[a-zA-Z0-9 !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
-
-        if(!allowedKeys.test(key) || event.ctrlKey || event.altKey ){
+        
+        const allowedKeys = /^[a-zA-Z0-9\s!"#$%&'()*+,-./:;<=>?@[\\\]^_`{|}~]+$/;
+        if(key.length>1||!allowedKeys.test(key)){
             return
         }
 
