@@ -9,7 +9,7 @@
 }
 
 #outlet{
-  height: 81vh;
+  height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,29 +19,47 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
 }
 
 .root{
+  background-color: var(--backLight);
+  color: var(--colorLight);
+}
+.root *{
+  color: var(--colorLight);
+}
+
+.root.dark{
   background-color: var(--backDark);
   color: var(--colorDark);
 }
 
-.root.dark{
-  background-color: var(--backLight);
-  color: var(--colorLight);
+.root.dark *{
+  color: var(--colorDark);
 }
 
 .card{
-  padding: 20px;
-  background: var(--backDark);
   border-radius: 20px;
+  background: var(--backDark);
+}
+
+.root.dark .card{
+  background: var(--backLight);
+}
+.root.dark .card *{
+  color: var(--colorLight);
+}
+
+.card form{
+  padding: 20px;
   max-width: 500px;
   width: 100%;
-  color: var(--backLight);
   display: flex;
   flex-direction: column;
   gap: 26px;
+}
+.card .head{
+  text-align: center;
 }
 .card .content{
   display: flex;
@@ -56,6 +74,9 @@
   gap: 13px;
 }
 
+.card .content .row h3{
+width: 100px;
+}
 .card .content .row input{
 padding: 15px 20px;
 border-radius: 10px;
@@ -68,6 +89,15 @@ font-weight: bold;
   gap: 20px;
 }
 
+.card .content .btns button,
+.card .content .btns button a{
+  background: var(--backDark);
+  color: var(--colorDark);
+}
+
 .card .content .error{
   color: red;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
 }
