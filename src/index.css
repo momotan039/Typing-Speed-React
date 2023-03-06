@@ -67,3 +67,17 @@ button:focus-visible {
   animation: jello 2s;
   transform-origin: center
 }
+
+.layer{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #1a1a1ad6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
