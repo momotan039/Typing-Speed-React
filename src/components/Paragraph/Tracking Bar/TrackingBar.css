@@ -1,0 +1,14 @@
+#tracking-bar{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(213, 198, 28, 0.566);
+    padding: 30px;
+    border-radius: 20px;
+    color: red !important;
+    margin-bottom: 40px;
+}
+
+#tracking-bar>div{
+    display: flex;
+    gap: 30px;
+}
