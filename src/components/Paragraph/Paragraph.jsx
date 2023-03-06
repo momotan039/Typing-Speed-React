@@ -78,7 +78,7 @@ export function Paragraph() {
         }
       }
     }}>
-      <div>
+      <div className="paragraph-container">
       <h1>Correct Words:{correctWords}</h1>
         <div className="paragraph">
           {

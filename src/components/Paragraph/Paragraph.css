@@ -1,3 +1,7 @@
+.paragraph-container{
+    text-align: center;
+}
+
 .paragraph{
     display: flex;
     flex-wrap: wrap;
