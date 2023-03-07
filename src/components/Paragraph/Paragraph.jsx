@@ -119,7 +119,7 @@ export function Paragraph({ playAgain }) {
             speed={speed}
             acc={calculateAccuracy(correctWords, words.length)}
             correctwords={correctWords}
-            time={seconds}
+            sec={seconds}
           />
           <div className="paragraph">
             {words.map((w, i) => {

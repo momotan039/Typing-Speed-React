@@ -1,9 +1,18 @@
 import './TrackingBar.css'
-export default function TrackingBar({ correctwords,speed,acc,time }) {
+export default function TrackingBar({ correctwords,speed,acc,sec }) {
+  
+  const getTime=()=>{
+    const minutes = Math.floor(sec / 60);
+    const remainingSeconds = sec % 60;
+    return `${minutes}:${remainingSeconds < 10 ?
+              '0' + remainingSeconds :
+               remainingSeconds}`
+  }
+
   return (
     <div id="tracking-bar">
       <div className="time">
-        <h3>Time:{time}</h3>
+        <h3>Time:{getTime()}</h3>
       </div>
       <div className="speed">
       <h3>Speed:{isNaN(speed)?0:speed}WPM</h3>
