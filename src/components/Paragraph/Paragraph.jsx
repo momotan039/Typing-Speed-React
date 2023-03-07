@@ -1,7 +1,9 @@
 import { createContext, useContext, useEffect, useRef, useState } from "react";
+import { AppContext } from "../../App.jsx";
 import MyConfetti from "../My Confetti/MyConfetti.jsx";
 import Spinner from "../Spinner/Spinner.jsx";
 import { playCorrectSound, playWrongSound } from "../Utils/Sounds.mjs";
+import User from "../Utils/User.mjs";
 import { Word } from "../Word/Word";
 import {
   removePointerChar,
@@ -14,6 +16,7 @@ import {
   isCorrectWord,
   calculateAccuracy,
   generateParagraph,
+  onFinishGame,
 } from "./HelperParagraph.mjs";
 import "./Paragraph.css";
 import TrackingBar from "./Tracking Bar/TrackingBar.jsx";
@@ -28,6 +31,7 @@ const paragraphObj = {
 
 export const ParagraphContext = createContext(paragraphObj);
 export function Paragraph({ playAgain }) {
+  const app=useContext(AppContext)
   const [indexCurrentWord, setIndexCurrentWord] = useState(0);
   const [indexCurrentChar, setindexCurrentChar] = useState(0);
   const [mainWords, setMainWords] = useState([]);
@@ -38,12 +42,20 @@ export function Paragraph({ playAgain }) {
   const [correctWords, setCorrectWords] = useState(0);
   const [isFocused, setIsFocused] = useState(false);
   const [showSpinner, setShowSpinner] = useState(true);
+  const [speed,setSpeed]=useState(0)
+  const [isTopRank,setIsTopRank]=useState(false)
   useEffect(() => {
     generateParagraph().then((res) => {
       setMainWords(getMainWords(res));
       setShowSpinner(false);
     });
   }, []);
+
+  useEffect(()=>{
+    setSpeed(calculateSpeed(correctWords, seconds))
+  },[seconds])
+
+
   return (
     <ParagraphContext.Provider
       value={{
@@ -76,6 +88,8 @@ export function Paragraph({ playAgain }) {
           if (isFinishParagraph(words, indexCurrentChar, indexCurrentWord)) {
             clearInterval(idTimer);
             setFinishGame(true);
+            setIsTopRank(User.isTopRank(app.user,speed))
+            onFinishGame(app.user,speed)
           }
         },
         jumbTOPreviousChar: (c) => {
@@ -102,7 +116,7 @@ export function Paragraph({ playAgain }) {
       ) : (
         <div className="paragraph-container">
           <TrackingBar
-            speed={calculateSpeed(correctWords, seconds)}
+            speed={speed}
             acc={calculateAccuracy(correctWords, words.length)}
             correctwords={correctWords}
             time={seconds}
@@ -114,7 +128,13 @@ export function Paragraph({ playAgain }) {
           </div>
           <br />
           <br />
-          {finishGame && <button onClick={playAgain}>Play again</button>}
+          {finishGame && 
+            <button onClick={playAgain}>Play again</button>
+          }
+          {
+            isTopRank&&
+            <MyConfetti speed={speed} playAgain={playAgain}/>
+          }
         </div>
       )}
     </ParagraphContext.Provider>

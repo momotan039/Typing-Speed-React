@@ -10,7 +10,29 @@ export default class User {
         this.topRank= 0
         this.avgSpeed= 0
         this.level=getLevel(this.avgSpeed)
+        this.rounds=[]
+        debugger
     }
+    static update(user,speed){
+        //add this round
+        user.rounds.push(speed)
+
+        //calculate avg speed
+        const sum=user.rounds.reduce((p,c)=>p+c,0)
+        user.avgSpeed=sum/user.rounds.length
+
+        //refresh top Rank
+        if(user.topRank<speed)
+        user.topRank=speed
+
+        //refresh level
+        user.level=getLevel(user.avgSpeed)
+    }
+
+    static isTopRank(user,speed){
+        return user.topRank<speed
+    }
+
 }
 
 export const LogOut = (setUser) => {
@@ -77,4 +99,5 @@ const users = [{
     topRank: 0,
     avgSpeed: 0,
     level: 'Begginer',
+    rounds:[]
 }]

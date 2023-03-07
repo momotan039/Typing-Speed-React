@@ -1,12 +1,13 @@
+import { useContext, useEffect } from 'react'
 import Confetti from 'react-confetti'
-
-export default function MyConfetti() {
+import './MyConfetti.css'
+export default function MyConfetti({playAgain,speed}) {
   return (
-    <div className="layer">
+    <div className="confetti layer">
         <Confetti/>
         <h1>Congratulations!!</h1>
-        <h3>Your typing speed incresed to 80WPM</h3>
-        <button>Complete Joy</button>
+        <h3>Your typing speed incresed to {speed}WPM</h3>
+        <button onClick={playAgain}>Complete Joy</button>
     </div>
   )
 }

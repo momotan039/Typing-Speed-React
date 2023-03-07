@@ -1,3 +1,6 @@
+import { saveUserToSorage } from "../Utils/LocalStorage.mjs"
+import User from "../Utils/User.mjs"
+
 export const cutsomizeWords = (wordIndex, charIndex,words) => {
         words.map((w,i)=>{
             w.chars.map((c,j)=>{
@@ -60,6 +63,12 @@ return false
  export const calculateAccuracy=(correctWord,words)=>{
     return Math.floor((correctWord/words)*100)
  }
+
+ export const onFinishGame=(user,speed)=>{
+   User.update(user,speed)
+   saveUserToSorage(user)
+ }
+
 
  export const generateParagraph=async()=>{
      // const quotes = [
