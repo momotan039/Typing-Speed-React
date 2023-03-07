@@ -14,6 +14,7 @@ export default function Header() {
           <nav className={`menu`}>
             <Link to='/'>Home</Link>
             <Link to='/settings'>Settings</Link>
+            <Link to='/account'>Account</Link>
             <button onClick={app.logout}>LogOut</button>
           </nav>
           </>

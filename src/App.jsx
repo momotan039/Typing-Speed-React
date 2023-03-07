@@ -10,6 +10,7 @@ import Login from "./components/Login/Login";
 import SignUp from "./components/Signup/SignUp";
 import { getUserFromSorage } from "./components/Utils/LocalStorage.mjs";
 import Home from "./components/Home/Home";
+import Account from "./components/Account/Account";
 
 
 export const AppContext=createContext()
@@ -23,8 +24,13 @@ function App() {
       },
       {
         path: "/settings",
-        element: <Settings />,
+       element:<Settings/>
       },
+      {
+        
+        path:'/account',
+        element: <Account />,
+      }
     ]
     const guestChildren=[
       {
