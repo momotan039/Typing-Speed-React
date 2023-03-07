@@ -3,37 +3,41 @@ import {
 } from "./LocalStorage.mjs"
 
 export default class User {
-    constructor({email,name,password}) {
-        this.name=name
-        this.email=email
-        this.passowrd=password
-        this.topRank= 0
-        this.avgSpeed= 0
-        this.level=getLevel(this.avgSpeed)
-        this.rounds=[]
-        debugger
+    constructor({
+        email,
+        name,
+        password
+    }) {
+        this.name = name
+        this.email = email
+        this.passowrd = password
+        this.topRank = 0
+        this.avgSpeed = 0
+        this.level = getLevel(this.avgSpeed)
+        this.rounds = []
     }
-    static update(user,speed){
+
+    static update(user, speed) {
         //add this round
         user.rounds.push({
-            speed:speed,
-            data:new Date()
+            speed: speed,
+            date: new Date()
         })
 
         //calculate avg speed
-        const sum=user.rounds.reduce((p,c)=>p+c.speed,0)
-        user.avgSpeed=Math.round(sum/user.rounds.length)
+        const sum = user.rounds.reduce((p, c) => p + c.speed, 0)
+        user.avgSpeed = Math.round(sum / user.rounds.length)
 
         //refresh top Rank
-        if(user.topRank<speed)
-        user.topRank=speed
-
+        if (user.topRank < speed)
+            user.topRank = speed
+        debugger
         //refresh level
-        user.level=getLevel(user.avgSpeed)
+        user.level = getLevel(user.avgSpeed)
     }
 
-    static isTopRank(user,speed){
-        return user.topRank<speed
+    static isTopRank(user, speed) {
+        return user.topRank < speed
     }
 
 }
@@ -43,11 +47,11 @@ export const LogOut = (setUser) => {
     setUser(null)
 }
 
-export const LogIn = (user, setUser,navigator) => {
+export const LogIn = (user, setUser, navigator) => {
     return new Promise((res, rej) => {
         setTimeout(() => {
             debugger
-            const u = users.find(f => f.email === user.email && f.password===user.password)
+            const u = users.find(f => f.email === user.email && f.password === user.password)
             if (!u) {
                 return rej('One of the fileds is incorrect!!')
             }
@@ -57,21 +61,51 @@ export const LogIn = (user, setUser,navigator) => {
     })
 }
 
-export const createAccount=(user)=>{
+export const createAccount = (user) => {
     debugger
-    return new Promise((res,rej)=>{
-        setTimeout(()=>{
+    return new Promise((res, rej) => {
+        setTimeout(() => {
             const u = users.find(f => f.email === user.email)
             if (u)
                 return rej('This User Already Exist')
-            const temp=new User(user)
+            const temp = new User(user)
             users.push(temp)
             return res(temp)
-        },2000)
+        }, 2000)
     })
 }
 
-
+export const levels=[
+    {
+        name:'Beginner',
+        img:'/images/level1.png',
+        range:[0,24]
+    },
+    {
+        name:'Intermediate',
+        img:'/images/level2.png',
+        range:[25,30]
+    },
+    {
+        name:'Amazing',
+        img:'/images/level3.png',
+        range:[31,41]
+    },{
+        name:'Pro',
+        img:'/images/level4.png',
+        range:[42,55]
+    },
+    {
+        name:'Expert',
+        img:'/images/level5.png',
+        range:[56,79]
+    },
+    {
+        name:'Typemaster',
+        img:'/images/level6.png',
+        range:[80,Number.MAX_VALUE]
+    }
+]
 const getLevel = (speed) => {
     //Beginner 0-24
     //Intermediate 25-30
@@ -79,20 +113,7 @@ const getLevel = (speed) => {
     //Pro 42-54
     //Expert 55-79
     //Typemaster 80+
-        switch (speed) {
-            case speed < 25:
-                return 'Beginner'
-            case speed < 31:
-                return 'Intermediate'
-            case speed < 42:
-                return 'Average'
-            case speed < 55:
-                return 'Pro'
-            case speed < 80:
-                return 'Expert'
-            default:
-                return 'Typemaster'
-        }
+    return levels.find(l=>speed>=l.range[0]&&speed<=l.range[1])
 }
 
 const users = [{
@@ -101,6 +122,6 @@ const users = [{
     password: '123456',
     topRank: 0,
     avgSpeed: 0,
-    level: 'Begginer',
-    rounds:[]
+    level: getLevel(0),
+    rounds: []
 }]
