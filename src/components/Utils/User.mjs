@@ -15,11 +15,14 @@ export default class User {
     }
     static update(user,speed){
         //add this round
-        user.rounds.push(speed)
+        user.rounds.push({
+            speed:speed,
+            data:new Date()
+        })
 
         //calculate avg speed
-        const sum=user.rounds.reduce((p,c)=>p+c,0)
-        user.avgSpeed=sum/user.rounds.length
+        const sum=user.rounds.reduce((p,c)=>p+c.speed,0)
+        user.avgSpeed=Math.round(sum/user.rounds.length)
 
         //refresh top Rank
         if(user.topRank<speed)

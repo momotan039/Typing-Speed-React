@@ -14,3 +14,11 @@ export const playWrongSound=(enabledSound)=>{
     audio.volume=0.3
     audio.play()
 }
+
+export const playConfettiSound=(enabledSound)=>{
+    if(!enabledSound)
+    return
+    const audio=new Audio('/src/assets/sounds/confetti2.mp3')
+    // audio.volume=0.3
+    audio.play()
+}

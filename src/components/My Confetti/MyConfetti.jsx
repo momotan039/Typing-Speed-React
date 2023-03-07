@@ -1,7 +1,13 @@
 import { useContext, useEffect } from 'react'
 import Confetti from 'react-confetti'
+import { SettingsContext } from '../Root'
+import { playConfettiSound } from '../Utils/Sounds.mjs'
 import './MyConfetti.css'
 export default function MyConfetti({playAgain,speed}) {
+  const settings=useContext(SettingsContext)
+  useEffect(()=>{
+    playConfettiSound(settings.enableSound)
+  })
   return (
     <div className="confetti layer">
         <Confetti/>
