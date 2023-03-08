@@ -89,7 +89,7 @@ export function Paragraph({ playAgain }) {
             clearInterval(idTimer);
             setFinishGame(true);
             setIsTopRank(User.isTopRank(app.user,speed))
-            onFinishGame(app.user,speed)
+            onFinishGame(app.user,speed,words,correctWords)
           }
         },
         jumbTOPreviousChar: (c) => {
