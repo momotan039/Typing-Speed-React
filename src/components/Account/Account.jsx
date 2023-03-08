@@ -33,14 +33,17 @@ export default function Account() {
                             </div>
                             <div className="data">
                                 <h1>{l.name}</h1>
+                                    {
+                                        i===levels.length-1?<h2>speed: 80+ WPM</h2>
+                                        :<h2>speed: {l.range.join('-')} WPM</h2>
+                                    }
                                 
-                                <h2>speed:{l.range.join('-')} WPM</h2>
                             </div>
                         </div>
                     })
                 }
             </div>
-            {/* <MyChart user={app.user}/> */}
+            <MyChart user={app.user}/>
         </div>
     )
 }
