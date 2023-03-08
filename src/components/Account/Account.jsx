@@ -3,9 +3,11 @@ import { AppContext } from '../../App'
 import MyChart from './MyChart'
 import './Account.css'
 import { levels } from '../Utils/User.mjs'
+import Statistics from './Statistics'
 export default function Account() {
     const app = useContext(AppContext)
     const user = app.user
+    const [sortedBy,setSortedBy]=useState('day')
     const [showLevels, setShowLevels] = useState(false)
     return (
         <div className='account'>
@@ -43,7 +45,13 @@ export default function Account() {
                     })
                 }
             </div>
-            <MyChart user={app.user}/>
+            <h1>Statistics {sortedBy}</h1>
+            <button onClick={() => setSortedBy('day')}>Today</button>
+            <button onClick={() => setSortedBy('month')}>Months</button>
+            <button onClick={() => setSortedBy('year')}>Years</button>
+            {
+                sortedBy&&<Statistics way={sortedBy} />
+            }
         </div>
     )
 }

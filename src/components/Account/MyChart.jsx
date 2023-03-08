@@ -1,11 +1,14 @@
 import Chart from 'chart.js/auto';
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
+import { AppContext } from '../../App';
 import { getCustomeDate, groupByDateValue } from './HelperChart';
 
-export default function MyChart({ user }) {
-  const [way,setSortedBY]=useState('day')
-  const chartRef = useRef()
-  let LABELS = []
+export default function MyChart({way}) {
+  debugger
+  const app = useContext(AppContext)
+  const user = app.user
+  const chartRef = useRef() 
+   let LABELS = []
   const getLabels = () => {
     if (way === 'day')
       return user.rounds.map(r => getCustomeDate(r.date))
@@ -41,15 +44,39 @@ export default function MyChart({ user }) {
 
     return res
   }
-  let chart = null
-  useEffect(() => {
+
+  const getErrors=()=>{
+    if (way === 'day')
+      return user.rounds.map(r => r.errors)
+
+      const roundsPerWay = groupByDateValue(user.rounds, way)
+      const res = Object.values(roundsPerWay).map(rounds => {
+        const sum = rounds.reduce((p, c) => p + c.errors, 0)
+        // return Math.round(sum / user.rounds.length)
+        return sum
+      })
+      return res
+  }
+
+  const getAccuracy=()=>{
+    if (way === 'day')
+      return user.rounds.map(r => r.acc)
+
+      const roundsPerWay = groupByDateValue(user.rounds, way)
+
+      const res = Object.values(roundsPerWay).map(rounds => {
+        const sum = rounds.reduce((p, c) => p + c.acc, 0)
+        return Math.round(sum / user.rounds.length)
+        return sum
+      })
+      return res
+  }
+
+  const refreshChart=()=>{
+    let chart = null
     const ctx = chartRef.current.getContext('2d');
-    if (chart) {
-      chart.destroy();
-      ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    }
     chart = new Chart(ctx, {
-      type: 'line',
+      type: way==='year'?'bar':'line',
       data: {
         labels: getLabels(),
         datasets: [
@@ -58,16 +85,16 @@ export default function MyChart({ user }) {
             data: getSpeed(),
             borderWidth: 1
           },
-          // {
-          //   label: 'Errors',
-          //   data: Object.values(groupByDateValue(user.rounds,'day')).map(r => r.errors),
-          //   borderWidth: 1
-          // },
-          // {
-          //   label: 'Accuracy',
-          //   data: user.rounds.map(r => r.acc),
-          //   borderWidth: 1
-          // }
+          {
+            label: 'Errors',
+            data: getErrors(),
+            borderWidth: 1
+          },
+          {
+            label: 'Accuracy',
+            data: getAccuracy(),
+            borderWidth: 1
+          }
         ]
       },
       options: {
@@ -83,17 +110,18 @@ export default function MyChart({ user }) {
         maintainAspectRatio: false
       }
     });
-  },[])
+    return [ctx,chart]
+  }
+  useEffect(() => {
+    const [ctx,chart]=refreshChart()
+    return ()=>{
+      chart.destroy();
+      ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    }
+  })
 
-  useEffect(()=>{
-    //complete here the chart when chaneg...
-  },[way])
   return (
     <>
-      <h1>Statistics</h1>
-      <button onClick={() => setSortedBY('day')}>Today</button>
-      <button onClick={() => setSortedBY('month')}>Months</button>
-      <button onClick={() => setSortedBY('year')}>Years</button>
       <div className="myChart">
         <canvas ref={chartRef} width={700} height={400}></canvas>
       </div>
