@@ -64,8 +64,10 @@ return false
     return Math.floor((correctWord/words)*100)
  }
 
- export const onFinishGame=(user,speed)=>{
-   User.update(user,speed)
+ export const onFinishGame=(user,speed,words,correctWords)=>{
+    const errors=words.length-correctWords
+    const acc=calculateAccuracy(correctWords,words.length)
+   User.update(user,speed,acc,errors)
    saveUserToSorage(user)
  }
 
