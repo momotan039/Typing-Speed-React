@@ -54,7 +54,7 @@ export default function Login() {
         }
             <div className="row">
                 <h3>Email:</h3>
-                <input required name="email" onChange={changeForm} type="email" value={formData.email}/>
+                <input required name="email" onChange={changeForm} type="email"/>
             </div>
             {errors.email && <div className="jello error">{errors.email}</div>}
             <div className="row">
