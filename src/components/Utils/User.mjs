@@ -17,11 +17,13 @@ export default class User {
         this.rounds = []
     }
 
-    static update(user, speed) {
+    static update(user, speed,acc,errors) {
         //add this round
         user.rounds.push({
             speed: speed,
-            date: new Date()
+            date: new Date(),
+            acc:acc,
+            errors:errors
         })
 
         //calculate avg speed
