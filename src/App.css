@@ -47,7 +47,7 @@
   /* height: 100%; */
 }
 .root{
-  background: linear-gradient(0deg,#000000,#000000b8),url(images/back.jpg) center;
+  background: linear-gradient(0deg,#000000,#000000b8),url(/images/back.jpg) center;
   background-size: cover;
   color: var(--colorDark);
   height: 100%;
