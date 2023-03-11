@@ -34,7 +34,7 @@ header nav a::after{
     width: 0%;
     height: 5px;
     border-radius: 5px;
-    transition: all 1s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    transition: all 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 .root.dark header nav a::after{
     background-color: var(--colorDark);
