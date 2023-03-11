@@ -1,5 +1,9 @@
 .paragraph-container{
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
 }
 
 .paragraph{
@@ -8,3 +12,17 @@
     justify-content: center;
     gap: 10px;
 }
+
+.isLoading{
+    background: #eee;
+    background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+    border-radius: 5px;
+    background-size: 200% 100%;
+    animation: 1.5s shine linear infinite;
+}
+
+@keyframes shine {
+    to {
+      background-position-x: -200%;
+    }
+  }

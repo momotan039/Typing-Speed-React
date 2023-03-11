@@ -10,7 +10,7 @@
     opacity: 0;
     top: 10px;
     transition: all 0.3s;
-    background-color: rgb(237 165 21);
+    background-color: #F2921D;
 }
 
 .char.now::after{
@@ -28,7 +28,7 @@
     outline: none;
 }
 .char.done{
-    color: green;
+    color: #F2921D;
 }
 
 .char.wrong{

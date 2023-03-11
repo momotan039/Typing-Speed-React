@@ -12,16 +12,16 @@ export default function TrackingBar({ correctwords,speed,acc,sec }) {
   return (
     <div id="tracking-bar">
       <div className="time">
-        <h3>Time:{getTime()}</h3>
+        <h3>Time:<span>{getTime()}</span></h3>
       </div>
       <div className="speed">
-      <h3>Speed:{isNaN(speed)?0:speed}WPM</h3>
+      <h3>Speed:<span>{isNaN(speed)?0:speed}</span>WPM</h3>
       </div>
       <div className="acc">
-      <h3>Accuracy:{acc}%</h3>
+      <h3>Accuracy:<span>{acc}</span>%</h3>
       </div>
       <div className="correct words">
-        <h3>Correct Words:{correctwords}</h3>
+        <h3>Correct Words:<span>{correctwords}</span></h3>
       </div>
     </div>
   );

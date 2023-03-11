@@ -2,8 +2,16 @@ header{
     display: flex;
     justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
 }
-
+header .logo a{
+    text-decoration: none;
+}
+header .logo img{
+    width: 50px;
+    height: 60px;
+    vertical-align: middle;
+}
 header nav{
     display: flex;
     align-items: center;
@@ -11,10 +19,46 @@ header nav{
 }
 
 header nav a{
-    color: var(--colorLight);
+    /* color: var(--colorLight); */
+    text-decoration: none;
+    font-size: 25px;
+    position: relative;
 }
 
-.root.dark header nav a{
-    color: var(--colorDark);
+header nav a::after{
+    position: absolute;
+    background-color: var(--colorLight);
+    content: '';
+    bottom: -4px;
+    left: 0;
+    width: 0%;
+    height: 5px;
+    border-radius: 5px;
+    transition: all 1s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+.root.dark header nav a::after{
+    background-color: var(--colorDark);
 }
 
+header nav a:hover::after{
+    width: 100%;
+}
+
+header nav a.active{
+font-weight: bold;
+animation: jello 1s alternate cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+header nav a.active::after{
+    width: 100%;
+}
+
+
+@media (max-width:480px) {
+    header .logo h1{
+        font-size: 24px;
+    }
+    header nav{
+        display: none;
+    }
+}

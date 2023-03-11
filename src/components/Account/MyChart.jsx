@@ -1,12 +1,8 @@
 import Chart from 'chart.js/auto';
 import { useContext, useEffect, useRef, useState } from 'react';
-import { AppContext } from '../../App';
 import { getCustomeDate, groupByDateValue } from './HelperChart';
 
-export default function MyChart({way}) {
-  debugger
-  const app = useContext(AppContext)
-  const user = app.user
+export default function MyChart({way,user}) {
   const chartRef = useRef() 
    let LABELS = []
   const getLabels = () => {
@@ -20,7 +16,6 @@ export default function MyChart({way}) {
     let res = []
     if (way === 'month') {
       // let res= data.map(r =>getCustomeDate(r.date,way))
-      debugger
       res = data.map(r => new Date(r.date).getMonth() + 1)
     }
 
@@ -36,7 +31,6 @@ export default function MyChart({way}) {
       return user.rounds.map(r => r.speed)
 
     const roundsPerWay = groupByDateValue(user.rounds, way)
-    debugger
     const res = Object.values(roundsPerWay).map(rounds => {
       const sum = rounds.reduce((p, c) => p + c.speed, 0)
       return Math.round(sum / user.rounds.length)
@@ -122,7 +116,7 @@ export default function MyChart({way}) {
 
   return (
     <>
-      <div className="myChart">
+      <div className="myChart card">
         <canvas ref={chartRef} width={700} height={400}></canvas>
       </div>
     </>

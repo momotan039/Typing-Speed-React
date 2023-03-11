@@ -31,7 +31,6 @@ export default function Login() {
           saveUserToSorage(res)
           setShowSpinner(false)
         }).catch((err)=>{
-          debugger
           setErrors({user:err})
         })
         setShowSpinner(false)
@@ -43,7 +42,8 @@ export default function Login() {
     }
 
   return (
-    <div className="card">
+    <div className="center">
+      <div className="card">
         <div className="head">
         <h1>Login</h1>
         </div>
@@ -71,6 +71,7 @@ export default function Login() {
         {
           showSpinner&&<Spinner/>
         }
+    </div>
     </div>
   )
 }

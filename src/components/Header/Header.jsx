@@ -1,20 +1,22 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { AppContext } from '../../App'
 import './Header.css'
 export default function Header() {
   const app=useContext(AppContext)
   return (
-    <header>
+    <header className='card'>
         <div className="logo jello">
-            <h1>Typing Speed</h1>
+            <Link to='/'>
+            <h1>Typing <img src="/images/typing.png"/> Speed</h1>
+            </Link>
         </div>
         {
           app.user&&<>
           <nav className={`menu`}>
-            <Link to='/'>Home</Link>
-            <Link to='/settings'>Settings</Link>
-            <Link to='/account'>Account</Link>
+            <NavLink to='/'>Home</NavLink>
+            <NavLink to='/settings'>Settings</NavLink>
+            <NavLink to='/account'>Account</NavLink>
             <button onClick={app.logout}>LogOut</button>
           </nav>
           </>

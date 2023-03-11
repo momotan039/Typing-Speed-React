@@ -1,3 +1,4 @@
+import { postUser } from "./Crud.mjs"
 import {
     saveUserToSorage
 } from "./LocalStorage.mjs"
@@ -10,11 +11,15 @@ export default class User {
     }) {
         this.name = name
         this.email = email
-        this.passowrd = password
+        this.password = password
         this.topRank = 0
         this.avgSpeed = 0
         this.level = getLevel(this.avgSpeed)
         this.rounds = []
+        this.settings={
+            enableSound:true,
+            isDarkTheme:true
+        }
     }
 
     static update(user, speed,acc,errors) {
@@ -49,10 +54,10 @@ export const LogOut = (setUser) => {
     setUser(null)
 }
 
-export const LogIn = (user, setUser, navigator) => {
+export const LogIn = (user, setUser,users) => {
+    
     return new Promise((res, rej) => {
         setTimeout(() => {
-            debugger
             const u = users.find(f => f.email === user.email && f.password === user.password)
             if (!u) {
                 return rej('One of the fileds is incorrect!!')
@@ -63,19 +68,17 @@ export const LogIn = (user, setUser, navigator) => {
     })
 }
 
-export const createAccount = (user) => {
-    debugger
-    return new Promise((res, rej) => {
-        setTimeout(() => {
+export const createAccount = async (user,users) => {
             const u = users.find(f => f.email === user.email)
             if (u)
                 return rej('This User Already Exist')
             const temp = new User(user)
-            users.push(temp)
-            return res(temp)
-        }, 2000)
-    })
-}
+            debugger
+            const data=await postUser(temp)
+            debugger
+            users.push(data)
+            return res(data)
+    }
 
 export const levels=[
     {
@@ -117,13 +120,3 @@ const getLevel = (speed) => {
     //Typemaster 80+
     return levels.find(l=>speed>=l.range[0]&&speed<=l.range[1])
 }
-
-const users = [{
-    name: "mohammed",
-    email: 'momotaha039@gmail.com',
-    password: '123456',
-    topRank: 0,
-    avgSpeed: 0,
-    level: getLevel(0),
-    rounds: []
-}]

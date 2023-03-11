@@ -1,8 +1,12 @@
 .account *{
     user-select: none;
 }
+.account{
+    width: 100%;
+}
 .account .card{
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     padding: 16px;
     width: auto;
@@ -14,12 +18,12 @@
     text-align: center;
 }
 .account .card .image img{
-    width: 100%;
+    width: 70%;
     height: 240px;
     border-radius: 50px;
 }
 .account .card .level{
-    color: red;
+    color: #F2921D ;
     cursor: pointer;
 }
 .account .card .detials{
@@ -28,27 +32,36 @@
     justify-content: center;
     gap: 40px;
 }
-.account .levels {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.account .levels{
     height: 0;
-    scale: 0;
-    padding: 0 ;
+    /* scale: 0; */
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
     transition:all 2s cubic-bezier(0.19, 1, 0.22, 1);
     /* overflow: auto; */
 }
+.account .levels .rows{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    overflow: auto;
+}
 .account .levels.show{
      margin-top: 10px;
-    height: 400px;
-    scale: 1;
+    height: 500px;
+    /* scale: 1; */
+    opacity: 1;
 }
+
 .account .levels .row{
     display: flex;
     width: 48%;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    /* gap: 20px; */
     scale: 0;
     transition:all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
 }
@@ -58,4 +71,14 @@
 .account .levels .row img{
     width: 100px;
     height: 100px;
+}
+
+
+@media (max-width:768px) {
+    .account .levels *{
+        font-size: 27px;
+    }
+    .account .levels .row{
+        width: 100%;
+    }
 }

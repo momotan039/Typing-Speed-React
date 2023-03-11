@@ -50,7 +50,8 @@ export default function SignUp() {
         }, 2000);
     }
   return (
-    <div className="card jello">
+    <div className="center">
+      <div className="card jello">
         <div className="head">
         <h1>Sign up</h1>
         </div>
@@ -83,6 +84,7 @@ export default function SignUp() {
         {
           showSpinner&&<Spinner/>
         }
+    </div>
     </div>
   )
 }

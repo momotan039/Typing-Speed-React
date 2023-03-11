@@ -114,8 +114,8 @@ export function Paragraph({ playAgain }) {
       {showSpinner ? (
         <Spinner />
       ) : (
-        <div className="paragraph-container">
-          <TrackingBar
+        <div className="paragraph-container card">
+         <TrackingBar
             speed={speed}
             acc={calculateAccuracy(correctWords, words.length)}
             correctwords={correctWords}

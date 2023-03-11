@@ -4,7 +4,8 @@ import './Settings.css'
 export default function Settings() {
     const settings = useContext(SettingsContext)
     return (
-        <div className="card" id="settings">
+        <div className="center">
+            <div className="card" id="settings">
             <div className="head"><h1>Settings</h1></div>
             <div className="content">
             <div className="row">
@@ -14,7 +15,7 @@ export default function Settings() {
                     <button onClick={settings.toggleTheme}>disabled</button>:
                     <button onClick={settings.toggleTheme}>enabled</button>
                 }
-            </div>
+        </div>
             <div className="row">
                 <h2>Sound</h2>
                 {
@@ -24,6 +25,7 @@ export default function Settings() {
                 }
             </div>
             </div>
+        </div>
         </div>
     )
 }
