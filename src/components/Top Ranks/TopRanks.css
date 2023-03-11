@@ -17,10 +17,31 @@ margin-bottom: 7px;
 cursor: pointer !important;
 max-width: 285px;
 text-decoration: none;
+border-radius: 7px;
+font-weight: bold;
 }
+
+.top-ranks .rank.current{
+    background: var(--backDark);
+}
+
+.top-ranks .rank.current *{
+    color: var(--colorDark);
+}
+
+
+.root.dark .top-ranks .rank.current{
+    background: var(--backLight);
+}
+
+.root.dark .top-ranks .rank.current *{
+    color: var(--colorLight);
+}
+
 
 .top-ranks .rank .img{
     width: 68px;
+    height: 68px;
     border-radius: 20px;
     background-position: center;
     background-size: cover;
@@ -29,4 +50,9 @@ text-decoration: none;
 .top-ranks .rank .info{
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.top-ranks .rank .info .speed span{
+color: #F2921D !important;
 }

@@ -7,22 +7,21 @@ export default function TopRanks() {
     const getSortedUserByTopRanks=()=>{
         return app.users.sort((a,b)=>{
             return b.topRank-a.topRank
-        })
+        }).slice(0,3)
     }
     return (
         <div className="top-ranks card">
             <div className="head">
-            <h1>Top Ranks</h1>
+            <h1>Top 3 Ranks</h1>
             </div>
             <div className="ranks">
                 {
                     getSortedUserByTopRanks().map((u,i) => {
-                        return <Link key={i} className='rank'  to={'/account/'+u.id}>
+                        return <Link key={i} className={`rank ${u.id===app.user.id?'current':''}`}  to={'/account/'+u.id}>
                                 <div className="img" style={{ backgroundImage: `url(${u.level.img})` }}></div>
                                 <div className="info">
+                                    <span className="speed">{u.name}~<span>{u.topRank}</span>WPM</span>
                                     <span className="mail">{u.email}</span>
-                                    <span className="name">{u.name}</span>
-                                    <span className="speed">{u.topRank}WPM</span>
                                 </div>
                         </Link>
                     })
