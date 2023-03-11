@@ -64,7 +64,7 @@ export default function Login() {
             {errors.password && <div className="jello error">{errors.password}</div>}
             <div className="btns">
                 <button onClick={loginUser}>Login</button>
-                <button><Link to={'/sign-up'}>Sign Up</Link></button>
+                <Link to={'/sign-up'}>Sign Up</Link>
             </div>
             </form>
         </div>

@@ -77,7 +77,7 @@ export const createAccount = async (user,users) => {
             const data=await postUser(temp)
             debugger
             users.push(data)
-            return res(data)
+            return data
     }
 
 export const levels=[

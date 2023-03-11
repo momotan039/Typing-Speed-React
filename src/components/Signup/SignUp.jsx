@@ -46,7 +46,7 @@ export default function SignUp() {
 
         setTimeout(() => {
           nav('/')
-        setShowSpinner(false)
+          setShowSpinner(false)
         }, 2000);
     }
   return (
@@ -77,7 +77,7 @@ export default function SignUp() {
             {errors.password && <div className="jello error">{errors.password}</div>}
             <div className="btns">
                 <button onClick={signUpUser}>Sign Up</button>
-                <button><Link to={'/'}>Sign In</Link></button>
+                <Link to={'/'}>Sign In</Link>
             </div>
             </form>
         </div>
