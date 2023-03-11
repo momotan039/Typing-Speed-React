@@ -15,8 +15,8 @@ export default function Header() {
           app.user&&<>
           <nav className={`menu`}>
             <NavLink to='/'>Home</NavLink>
-            <NavLink to='/settings'>Settings</NavLink>
             <NavLink to='/account'>Account</NavLink>
+            <NavLink to='/settings'>Settings</NavLink>
             <button onClick={app.logout}>LogOut</button>
           </nav>
           </>

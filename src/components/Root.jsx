@@ -17,15 +17,18 @@ export default function Root() {
     return true
   }
   const getThemeMode=()=>{
-    debugger
     if(user)
     return user.settings.isDarkTheme
     return true
   }
 
-  const [enableSound, setEnableSound] = useState(getSoundMode());
-  const [isDarkTheme, setIsDarkTheme] = useState(getThemeMode());
+  const [enableSound, setEnableSound] = useState(true);
+  const [isDarkTheme, setIsDarkTheme] = useState(true);
 
+  useEffect(()=>{
+    setEnableSound(getSoundMode())
+    setIsDarkTheme(getThemeMode())
+  })
   return (
     <SettingsContext.Provider
       value={{
