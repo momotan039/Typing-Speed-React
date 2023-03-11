@@ -1,6 +1,5 @@
 import { useContext, useEffect } from "react"
 import { SettingsContext } from "../Root"
-import './Settings.css'
 export default function Settings() {
     const settings = useContext(SettingsContext)
     return (
@@ -12,16 +11,16 @@ export default function Settings() {
                 <h2>Dark Theme</h2>
                 {
                     settings.isDarkTheme?
-                    <button onClick={settings.toggleTheme}>disabled</button>:
-                    <button onClick={settings.toggleTheme}>enabled</button>
+                    <button onClick={settings.toggleTheme}>disable</button>:
+                    <button onClick={settings.toggleTheme}>enable</button>
                 }
         </div>
             <div className="row">
                 <h2>Sound</h2>
                 {
                     settings.enableSound?
-                    <button onClick={settings.toggleSound}>disabled</button>:
-                    <button onClick={settings.toggleSound}>enabled</button>
+                    <button onClick={settings.toggleSound}>disable</button>:
+                    <button onClick={settings.toggleSound}>enable</button>
                 }
             </div>
             </div>
