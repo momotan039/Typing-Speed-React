@@ -71,13 +71,13 @@ export const LogIn = (user, setUser,users) => {
 export const createAccount = async (user,users) => {
             const u = users.find(f => f.email === user.email)
             if (u)
-                return rej('This User Already Exist')
+                return Promise.reject('This User Already Exist')
             const temp = new User(user)
             debugger
             const data=await postUser(temp)
             debugger
             users.push(data)
-            return data
+            return Promise.resolve(data)
     }
 
 export const levels=[

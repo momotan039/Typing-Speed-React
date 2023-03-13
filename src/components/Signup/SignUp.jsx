@@ -42,6 +42,7 @@ export default function SignUp() {
           app.login(res)
         }).catch((err)=>{
           setErrors({user:err})
+          return
         })
 
         setTimeout(() => {
