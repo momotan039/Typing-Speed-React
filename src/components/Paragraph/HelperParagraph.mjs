@@ -87,6 +87,6 @@ return false
    //    const paragraph=quotes[Math.floor(Math.random()*quotes.length)]
    //    return paragraph
 
-    const res=await fetch('https://api.quotable.io/random').then((r)=>r.json())
+    const res=await fetch('http://api.quotable.io/random').then((r)=>r.json())
     return res.content
  }
