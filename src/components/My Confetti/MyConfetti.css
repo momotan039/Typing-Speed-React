@@ -3,3 +3,14 @@
     flex-direction: column;
     gap: 20px;
 }
+
+.confetti .card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+.confetti .card *{
+    position: relative;
+}
