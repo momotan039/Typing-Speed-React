@@ -87,6 +87,6 @@ return false
    //    const paragraph=quotes[Math.floor(Math.random()*quotes.length)]
    //    return paragraph
 
-    const res=await fetch('http://api.quotable.io/random').then((r)=>r.json())
-    return res.content
+    const res=await fetch('https://api.api-ninjas.com/v1/quotes?X-Api-Key=GTBlQGL68Qvjci31Lb9Ybg==0PvlCGmteWTsrlDF').then((r)=>r.json())
+    return res.quote
  }
