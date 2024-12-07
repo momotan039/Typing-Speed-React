@@ -88,5 +88,5 @@ return false
    //    return paragraph
 
     const res=await fetch('https://api.api-ninjas.com/v1/quotes?X-Api-Key=GTBlQGL68Qvjci31Lb9Ybg==0PvlCGmteWTsrlDF').then((r)=>r.json())
-    return res.quote
+    return res[0].quote
  }
